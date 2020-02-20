@@ -1,6 +1,10 @@
-build:
-  image: java:openjdk-7
-  environment:
-    - GRADLE_USER_HOME=~/.gradle
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: maven:3-jdk-10
   commands:
-    - ./gradlew test
+  - ./gradlew test
+  environment:
+    GRADLE_USER_HOME: ~/.gradle
